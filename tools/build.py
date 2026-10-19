@@ -1,8 +1,8 @@
 """Generator dema BED-CAR. Uruchomienie z katalogu repo: python3 tools/build.py
 
 Wspólny nagłówek, stopka i meta (w tym noindex dema) są tylko tutaj — nie edytować .html ręcznie.
-Treść: wyłącznie fakty z FB klienta (Skup aut, złomowanie samochodów, sprzedaż samochodów Bed-car handel)
-i notatki z CRM. Python 3.9: bez f-stringów z backslashami, szablony podmieniane przez .replace().
+Treść: wyłącznie fakty z FB klienta i notatki z CRM. Na stronie TYLKO skup i złomowanie
+(bez renowacji, sprzedaży aut i pomocy drogowej — decyzja Marcelego 19.10.2026). Python 3.9: bez f-stringów z backslashami, szablony podmieniane przez .replace().
 """
 import hashlib
 import json
@@ -95,11 +95,11 @@ FOOT = """</main>
   <div class="wrap">
     <div>
       <img src="assets/img/logo-jasne.png" alt="BED-CAR" width="640" height="{{LOGOH}}" loading="lazy">
-      <p>Skup, złomowanie i sprzedaż samochodów. Odkupujemy auta całe, uszkodzone, powypadkowe i przeznaczone do kasacji na terenie województwa śląskiego i małopolskiego.</p>
+      <p>Skup i złomowanie samochodów. Odkupujemy auta całe, uszkodzone, powypadkowe i przeznaczone do kasacji na terenie województwa śląskiego i małopolskiego.</p>
     </div>
     <div>
       <h4>Usługi</h4>
-      <ul><li><a href="skup-aut.html">Skup aut</a></li><li><a href="zlomowanie-aut.html">Złomowanie aut</a></li><li><a href="index.html#sprzedaz">Sprzedaż samochodów</a></li><li><a href="index.html#sprzedaz">Pomoc drogowa</a></li></ul>
+      <ul><li><a href="skup-aut.html">Skup aut</a></li><li><a href="zlomowanie-aut.html">Złomowanie aut</a></li><li><a href="index.html#proces">Jak to działa</a></li></ul>
     </div>
     <div>
       <h4>Obszar</h4>
@@ -230,7 +230,7 @@ INDEX = """
     <article class="card rv"><div class="ico">{{I_CAR}}</div><h3>Całe i sprawne</h3><p>Samochody na chodzie, które chcesz sprzedać szybko, bez wystawiania ogłoszeń i spotkań z kupującymi.</p></article>
     <article class="card rv"><div class="ico">{{I_NOOC}}</div><h3>Bez OC i przeglądu</h3><p>Brak ważnego ubezpieczenia lub badania technicznego nie jest przeszkodą. Auto zabieramy lawetą.</p></article>
     <article class="card rv"><div class="ico">{{I_LORRY}}</div><h3>Osobowe i ciężarowe</h3><p>Skupujemy samochody osobowe oraz ciężarowe, zarówno całe, jak i uszkodzone.</p></article>
-    <article class="card rv"><div class="ico">{{I_KEY}}</div><h3>Do renowacji</h3><p>Część odkupionych aut przywracamy do sprawności i wystawiamy na sprzedaż.</p></article>
+    <article class="card rv"><div class="ico">{{I_KEY}}</div><h3>Długo stojące</h3><p>Auta, które od dawna nie są używane i stoją na posesji, parkingu lub w garażu.</p></article>
   </div>
 </div></section>
 
@@ -259,22 +259,7 @@ INDEX = """
   </div>
 </div></section>
 
-<section class="sec sec-grey" id="sprzedaz"><div class="wrap split rev">
-  <div class="split-media rv"><img src="assets/img/renowacja.webp" alt="Samochód w warsztacie podczas renowacji" width="1200" height="800" loading="lazy"><div class="float">{{I_WRENCH_AMBER}} Renowacja i sprzedaż samochodów</div></div>
-  <div class="rv">
-    <span class="eyebrow">Sprzedaż i pomoc</span>
-    <h2>Auta po renowacji, pomoc przy zakupie i pomoc drogowa</h2>
-    <p>Część skupionych samochodów przywracamy do sprawności i sprzedajemy. Jeżeli szukasz auta, zadzwoń i zapytaj o samochody dostępne w tej chwili.</p>
-    <div class="mini">
-      <div><b>Sprzedaż aut</b><span>samochody po renowacji</span></div>
-      <div><b>Pomoc przy zakupie</b><span>doradzimy przy wyborze auta</span></div>
-      <div><b>Pomoc drogowa</b><span>transport lawetą</span></div>
-    </div>
-    <p style="margin-top:28px"><a class="btn btn-amber" href="{{TEL_HREF}}">{{I_TEL}} Zapytaj o dostępne auta</a></p>
-  </div>
-</div></section>
-
-<section class="sec" id="obszar"><div class="wrap area">
+<section class="sec sec-grey" id="obszar"><div class="wrap area">
   <div class="rv">
     <span class="eyebrow">Obszar działania</span>
     <h2>Dojeżdżamy na terenie całego Śląska i Małopolski</h2>
@@ -285,7 +270,7 @@ INDEX = """
   <div class="map-box rv">{{MAPA}}</div>
 </div></section>
 
-<section class="sec sec-grey"><div class="wrap">
+<section class="sec"><div class="wrap">
   <div class="sec-head center rv"><span class="eyebrow">Pytania</span><h2>Najczęściej zadawane pytania</h2></div>
   {{FAQ}}
 </div></section>
